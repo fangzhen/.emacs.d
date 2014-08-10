@@ -59,6 +59,11 @@
                 minibuffer-setup-hook))
   (add-hook hook #'sanityinc/no-trailing-whitespace))
 
+(global-whitespace-mode t)
+(setq whitespace-style '(face trailing tabs tab-mark))
+(custom-set-faces
+ '(whitespace-trailing ((t (:foreground "dark gray" :underline (:color foreground-color :style wave))))))
+
 
 (require-package 'whitespace-cleanup-mode)
 (global-whitespace-cleanup-mode t)
