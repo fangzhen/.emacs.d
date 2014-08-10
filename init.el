@@ -31,6 +31,7 @@
 (require-package 'scratch)
 (require-package 'mwe-log-commands)
 
+;; (require 'init-el-get)
 (require 'init-frame-hooks)
 (require 'init-xterm)
 (require 'init-themes)
@@ -42,6 +43,7 @@
 (require 'init-uniquify)
 (require 'init-ibuffer)
 (require 'init-flycheck)
+;; (require 'init-evil)
 
 (require 'init-recentf)
 (require 'init-ido)
