@@ -54,6 +54,7 @@
 (require 'init-fonts)
 (require 'init-mmm)
 
+(require 'init-tabbar-ruler)
 (require 'init-editing-utils)
 
 (require 'init-vc)
