@@ -30,7 +30,7 @@
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
 (when (fboundp 'set-scroll-bar-mode)
-  (set-scroll-bar-mode nil))
+  (set-scroll-bar-mode t))
 
 (defun sanityinc/adjust-opacity (frame incr)
   (let* ((oldalpha (or (frame-parameter frame 'alpha) 100))
