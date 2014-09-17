@@ -55,6 +55,7 @@
 (require 'init-mmm)
 
 (require 'init-tabbar-ruler)
+(require 'init-sr-speedbar)
 (require 'init-editing-utils)
 
 (require 'init-vc)
