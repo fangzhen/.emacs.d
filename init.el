@@ -64,6 +64,7 @@
 (require 'init-tabbar-ruler)
 (require 'init-sr-speedbar)
 (require 'init-editing-utils)
+(require 'init-neotree)
 
 (require 'init-vc)
 (require 'init-darcs)
