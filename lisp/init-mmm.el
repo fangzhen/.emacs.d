@@ -5,6 +5,6 @@
 (require 'mmm-auto)
 (setq mmm-global-mode 'buffers-with-submode-classes)
 (setq mmm-submode-decoration-level 2)
-
+;(setq mmm-parse-when-idle 't)
 
 (provide 'init-mmm)
