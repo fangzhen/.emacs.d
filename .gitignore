@@ -34,3 +34,8 @@ site-lisp/package/
 /image-dired/
 /el-get
 session*
+ede-projects.el
+ido.last
+recentf
+.emacs-buffers
+projectile-bookmarks.eld
