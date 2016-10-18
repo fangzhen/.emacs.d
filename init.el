@@ -65,6 +65,7 @@
 (require 'init-sr-speedbar)
 (require 'init-editing-utils)
 (require 'init-neotree)
+(require 'init-desktop)
 
 (require 'init-vc)
 (require 'init-darcs)
