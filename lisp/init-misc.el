@@ -15,5 +15,6 @@
 
 (add-auto-mode 'conf-mode "Procfile")
 
+(blink-cursor-mode 0)
 
 (provide 'init-misc)
