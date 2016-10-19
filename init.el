@@ -61,6 +61,7 @@
 (require 'init-fonts)
 (require 'init-mmm)
 
+(require 'init-projectile)
 (require 'init-tabbar-ruler)
 (require 'init-sr-speedbar)
 (require 'init-editing-utils)
