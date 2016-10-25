@@ -116,6 +116,8 @@
   (require-package 'osx-location))
 (require-package 'regex-tool)
 
+(require 'init-hideshowvis)
+
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
 ;;----------------------------------------------------------------------------
