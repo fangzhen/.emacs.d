@@ -39,3 +39,4 @@ ido.last
 recentf
 .emacs-buffers
 projectile*
+/eshell
