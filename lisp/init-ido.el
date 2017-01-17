@@ -6,6 +6,7 @@
 (setq ido-use-filename-at-point nil)
 (setq ido-auto-merge-work-directories-length 0)
 (setq ido-use-virtual-buffers t)
+(setq ido-auto-merge-work-directories-length -1)
 
 (when (eval-when-compile (>= emacs-major-version 24))
  (require-package 'ido-ubiquitous)
