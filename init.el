@@ -38,6 +38,7 @@
 (require-package 'scratch)
 (require-package 'mwe-log-commands)
 
+(require 'init-mouse)
 ;; (require 'init-el-get)
 (require 'init-frame-hooks)
 (require 'init-xterm)
@@ -55,15 +56,13 @@
 (require 'init-recentf)
 (require 'init-ido)
 (require 'init-hippie-expand)
-(require 'init-auto-complete)
+(require 'init-company)
 (require 'init-windows)
 (require 'init-sessions)
 (require 'init-fonts)
 (require 'init-mmm)
 
 (require 'init-projectile)
-(require 'init-tabbar-ruler)
-(require 'init-sr-speedbar)
 (require 'init-editing-utils)
 (require 'init-neotree)
 (require 'init-desktop)
@@ -103,8 +102,9 @@
   (require 'init-spelling))
 
 (require 'init-marmalade)
+(require 'init-tabbar-ruler)
+(require 'init-sr-speedbar)
 (require 'init-misc)
-(require 'init-nwheel)
 
 (require 'init-dash)
 (require 'init-ledger)

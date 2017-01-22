@@ -4,4 +4,8 @@
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 (setq scroll-step 1) ;; keyboard scroll one line at a time
 
-(provide 'init-nwheel)
+(global-unset-key [S-mouse-1])
+(global-unset-key [S-down-mouse-1])
+(global-unset-key [M-mouse-3])
+
+(provide 'init-mouse)
