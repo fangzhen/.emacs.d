@@ -104,6 +104,7 @@
 
 (require 'init-marmalade)
 (require 'init-misc)
+(require 'init-nwheel)
 
 (require 'init-dash)
 (require 'init-ledger)
