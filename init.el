@@ -38,10 +38,10 @@
 (require-package 'scratch)
 (require-package 'mwe-log-commands)
 
-(require 'init-mouse)
 ;; (require 'init-el-get)
 (require 'init-frame-hooks)
 (require 'init-xterm)
+(require 'init-mouse)
 (require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
