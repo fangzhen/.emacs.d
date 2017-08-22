@@ -65,7 +65,6 @@
 (require 'init-projectile)
 (require 'init-editing-utils)
 ;; (require 'init-neotree)
-(require 'init-desktop)
 
 (require 'init-vc)
 (require 'init-darcs)
@@ -110,6 +109,8 @@
 (require 'init-ledger)
 (require 'init-indent-tools)
 (require 'init-ggtags)
+
+(require 'init-desktop)
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)

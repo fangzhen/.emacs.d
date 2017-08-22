@@ -32,9 +32,34 @@
 (savehist-mode t)
 
 (require-package 'session)
+(require 'session)
 
 (setq session-save-file (expand-file-name ".session" user-emacs-directory))
 (add-hook 'after-init-hook 'session-initialize)
+(setq session-globals-include (append session-globals-include '(desktop-dirname)))
+
+(defun desktop-read-saved (orig-fun &rest dirname)
+  (if (file-readable-p "~/.emacs.d/desktops/.saved-desktop")
+  (load "~/.emacs.d/desktops/.saved-desktop"))
+  (unless (boundp 'saved-desktop-dirname)
+    (setq saved-desktop-dirname nil))
+
+  (if (and saved-desktop-dirname (not (and (< 0 (length dirname)) dirname)))
+   (funcall orig-fun saved-desktop-dirname)
+   (apply orig-fun dirname)
+  )
+  (advice-remove 'desktop-read #'desktop-read-saved)
+)
+
+(defun save-last-desktop ()
+  "Save last desktop dir."
+  (write-region (format "(setq-default saved-desktop-dirname %S)" desktop-dirname)
+   nil
+   "~/.emacs.d/desktops/.saved-desktop")
+  )
+
+(add-hook 'before-init-hook (advice-add 'desktop-read :around #'desktop-read-saved))
+(add-hook 'desktop-after-read-hook 'save-last-desktop)
 
 ;; save a bunch of variables to the desktop file
 ;; for lists specify the len of the maximal saved data also
