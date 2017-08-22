@@ -16,5 +16,6 @@
 (add-auto-mode 'conf-mode "Procfile")
 
 (blink-cursor-mode 0)
+(global-linum-mode t)
 
 (provide 'init-misc)
