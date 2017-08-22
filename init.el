@@ -64,7 +64,7 @@
 
 (require 'init-projectile)
 (require 'init-editing-utils)
-(require 'init-neotree)
+;; (require 'init-neotree)
 (require 'init-desktop)
 
 (require 'init-vc)
