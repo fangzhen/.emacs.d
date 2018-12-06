@@ -33,10 +33,10 @@
 ;;----------------------------------------------------------------------------
 
 (require-package 'wgrep)
-(require-package 'project-local-variables)
+;; (require-package 'project-local-variables)
 (require-package 'diminish)
 (require-package 'scratch)
-(require-package 'mwe-log-commands)
+;; (require-package 'mwe-log-commands)
 
 ;; (require 'init-el-get)
 (require 'init-frame-hooks)
@@ -46,7 +46,7 @@
 (require 'init-osx-keys)
 (require 'init-gui-frames)
 (require 'init-proxies)
-(require 'init-dired)
+;;(require 'init-dired)
 (require 'init-isearch)
 (require 'init-uniquify)
 (require 'init-ibuffer)
@@ -54,7 +54,7 @@
 ;; (require 'init-evil)
 
 (require 'init-recentf)
-(require 'init-ido)
+;; (require 'init-ido)
 (require 'init-hippie-expand)
 (require 'init-company)
 (require 'init-windows)
@@ -68,18 +68,18 @@
 
 (require 'init-vc)
 (require 'init-darcs)
-(require 'init-git)
+;; (require 'init-git)
 
-(require 'init-crontab)
+;; (require 'init-crontab)
 (require 'init-textile)
 (require 'init-markdown)
-(require 'init-csv)
+;; (require 'init-csv)
 (require 'init-erlang)
 (require 'init-javascript)
 (require 'init-php)
-(require 'init-org)
-(require 'init-nxml)
-(require 'init-html)
+;; (require 'init-org)
+;; (require 'init-nxml)
+;; (require 'init-html)
 (require 'init-css)
 (require 'init-haml)
 (require 'init-python-mode)
@@ -90,7 +90,7 @@
 (require 'init-sql)
 
 ;; (require 'init-paredit)
-(require 'init-lisp)
+;; (require 'init-lisp)
 (require 'init-slime)
 (require 'init-clojure)
 (when (>= emacs-major-version 24)
@@ -100,7 +100,7 @@
 (when *spell-check-support-enabled*
   (require 'init-spelling))
 
-(require 'init-marmalade)
+;; (require 'init-marmalade)
 (require 'init-tabbar-ruler)
 (require 'init-sr-speedbar)
 (require 'init-misc)
@@ -121,7 +121,7 @@
   (require-package 'osx-location))
 (require-package 'regex-tool)
 
-(require 'init-hideshowvis)
+;; (require 'init-hideshowvis)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
