@@ -8,6 +8,7 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (package-initialize)
+(define-coding-system-alias 'UTF-8 'utf-8)
 
 (let ((minver 23))
   (unless (>= emacs-major-version minver)
@@ -18,6 +19,7 @@
 
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
+(setq byte-compile-warnings '(not free-vars ))
 
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
@@ -54,11 +56,10 @@
 ;; (require 'init-evil)
 
 (require 'init-recentf)
-;; (require 'init-ido)
+(require 'init-ido)
 (require 'init-hippie-expand)
 (require 'init-company)
 (require 'init-windows)
-(require 'init-sessions)
 (require 'init-fonts)
 (require 'init-mmm)
 
@@ -110,7 +111,6 @@
 (require 'init-indent-tools)
 (require 'init-ggtags)
 
-(require 'init-desktop)
 ;; Extra packages which don't require any configuration
 
 (require-package 'gnuplot)
@@ -151,6 +151,8 @@
 ;; Locales (setting them earlier in this file doesn't work in X)
 ;;----------------------------------------------------------------------------
 (require 'init-locales)
+
+(require 'init-sessions)
 
 (add-hook 'after-init-hook
           (lambda ()

@@ -1,7 +1,43 @@
+(require-package 'desktop+)
+(require 'desktop+)
+
 ;; save a list of open files in ~/.emacs.d/.emacs.desktop
 (setq desktop-path (list user-emacs-directory)
       desktop-auto-save-timeout 600)
-(desktop-save-mode 0)
+(desktop-save-mode 1)
+
+(desktop+-add-handler 'speedbar-buffer
+  (lambda ()
+    (eq (current-buffer) speedbar-buffer))
+
+  (lambda ()
+    `(:dir, default-directory,
+    :sr-speedbar-enabled, (sr-speedbar-exist-p)))
+
+  (lambda (name &rest args)
+    (if (plist-get args :sr-speedbar-enabled)
+        (progn
+          (sr-speedbar-open)
+          (with-current-buffer
+              (get-buffer name)
+            (setq default-directory (plist-get args :dir))
+            (speedbar-update-contents)))
+      )
+    )
+  )
+
+
+(setq desktop+-special-buffer-handlers
+  '(speedbar-buffer)
+  )
+
+(defun desktop+-active-desktop ()
+  "Show current active desktop."
+  (interactive)
+  (message desktop-dirname)
+    )
+
+
 (defadvice desktop-read (around trace-desktop-errors activate)
   (let ((debug-on-error t))
     ad-do-it))
@@ -24,19 +60,6 @@
                                                start-time)
                (when filename
 		 (abbreviate-file-name filename))))))
-
-;;----------------------------------------------------------------------------
-;; Restore histories and registers after saving
-;;----------------------------------------------------------------------------
-(setq-default history-length 1000)
-(savehist-mode t)
-
-(require-package 'session)
-(require 'session)
-
-(setq session-save-file (expand-file-name ".session" user-emacs-directory))
-(add-hook 'after-init-hook 'session-initialize)
-(setq session-globals-include (append session-globals-include '(desktop-dirname)))
 
 (defun desktop-read-saved (orig-fun &rest dirname)
   (if (file-readable-p "~/.emacs.d/desktops/.saved-desktop")
@@ -61,12 +84,12 @@
 (add-hook 'before-init-hook (advice-add 'desktop-read :around #'desktop-read-saved))
 (add-hook 'desktop-after-read-hook 'save-last-desktop)
 
-;; save a bunch of variables to the desktop file
-;; for lists specify the len of the maximal saved data also
 (setq desktop-globals-to-save
       (append '((comint-input-ring        . 50)
                 (compile-history          . 30)
                 desktop-missing-file-warning
+		sr-speedbar-width
+		default-directory
                 (dired-regexp-history     . 20)
                 (extended-command-history . 30)
                 (face-name-history        . 20)
@@ -91,13 +114,5 @@
                 (shell-command-history    . 50)
                 tags-file-name
                 tags-table-list)))
-
-(when (eval-when-compile (and (>= emacs-major-version 24)
-                              (string< emacs-version "24.3.50")
-                              ))
-  (unless (boundp 'desktop-restore-frames)
-    (require-package 'frame-restore)
-    (frame-restore)))
-
 
 (provide 'init-sessions)

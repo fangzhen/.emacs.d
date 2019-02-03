@@ -1,4 +1,5 @@
 (require-package 'sr-speedbar)
+(require 'speedbar)
 
 (setq sr-speedbar-auto-refresh nil)
 (setq sr-speedbar-width 25)
@@ -22,7 +23,7 @@
 	  )
       (error "Not a file"))))
 
-(sr-speedbar-open)
+;; (sr-speedbar-open)
 (define-key speedbar-file-key-map "\C-m" 'speedbar-toggle-line-expansion)
 (define-key speedbar-file-key-map "F" 'speedbar-create-file)
 
