@@ -326,8 +326,6 @@ With arg N, insert N newlines."
                    (lambda (s1 s2) (eq (random 2) 0)))))))
 
 
-
-
 (when (executable-find "ag")
   (require-package 'ag)
   (require-package 'wgrep-ag)
@@ -335,15 +333,12 @@ With arg N, insert N newlines."
   (global-set-key (kbd "M-?") 'ag-project))
 
 
-
 (require-package 'highlight-escape-sequences)
 (hes-mode)
 
-
-(require-package 'guide-key)
-(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n"))
-(guide-key-mode 1)
-(diminish 'guide-key-mode)
+(require-package 'which-key)
+(which-key-mode 1)
+(diminish 'which-key-mode)
 
 
 (provide 'init-editing-utils)
