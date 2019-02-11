@@ -3,8 +3,11 @@
 ;;----------------------------------------------------------------------------
 (winner-mode 1)
 
+(global-set-key (kbd "s-b")  'windmove-left)
+(global-set-key (kbd "s-f") 'windmove-right)
+(global-set-key (kbd "s-p")    'windmove-up)
+(global-set-key (kbd "s-n")  'windmove-down)
 
-
 (global-set-key (kbd "C-x o") 'next-multiframe-window)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
 
