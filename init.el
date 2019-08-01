@@ -10,10 +10,6 @@
 (package-initialize)
 (define-coding-system-alias 'UTF-8 'utf-8)
 
-(let ((minver 23))
-  (unless (>= emacs-major-version minver)
-    (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
-
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'init-benchmarking) ;; Measure startup time
 
@@ -24,7 +20,6 @@
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
-(require 'init-compat)
 (require 'init-utils)
 (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
 (require 'init-elpa)      ;; Machinery for installing required packages
@@ -35,12 +30,9 @@
 ;;----------------------------------------------------------------------------
 
 (require-package 'wgrep)
-;; (require-package 'project-local-variables)
 (require-package 'diminish)
 (require-package 'scratch)
-;; (require-package 'mwe-log-commands)
 
-;; (require 'init-el-get)
 (require 'init-frame-hooks)
 (require 'init-xterm)
 (require 'init-mouse)
@@ -48,12 +40,10 @@
 (require 'init-osx-keys)
 (require 'init-gui-frames)
 (require 'init-proxies)
-;;(require 'init-dired)
 (require 'init-isearch)
 (require 'init-uniquify)
 (require 'init-ibuffer)
 (require 'init-flycheck)
-;; (require 'init-evil)
 
 (require 'init-recentf)
 (require 'init-ido)
@@ -65,22 +55,15 @@
 
 (require 'init-projectile)
 (require 'init-editing-utils)
-;; (require 'init-neotree)
 
 (require 'init-vc)
 (require 'init-darcs)
-;; (require 'init-git)
 
-;; (require 'init-crontab)
 (require 'init-textile)
 (require 'init-markdown)
-;; (require 'init-csv)
 (require 'init-erlang)
 (require 'init-javascript)
 (require 'init-php)
-;; (require 'init-org)
-;; (require 'init-nxml)
-;; (require 'init-html)
 (require 'init-css)
 (require 'init-haml)
 (require 'init-python-mode)
@@ -90,8 +73,6 @@
 (require 'init-rails)
 (require 'init-sql)
 
-;; (require 'init-paredit)
-;; (require 'init-lisp)
 (require 'init-slime)
 (require 'init-clojure)
 (when (>= emacs-major-version 24)
@@ -101,7 +82,6 @@
 (when *spell-check-support-enabled*
   (require 'init-spelling))
 
-;; (require 'init-marmalade)
 (require 'init-tabbar-ruler)
 (require 'init-sr-speedbar)
 (require 'init-misc)
@@ -121,7 +101,6 @@
   (require-package 'osx-location))
 (require-package 'regex-tool)
 
-;; (require 'init-hideshowvis)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
