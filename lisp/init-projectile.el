@@ -4,4 +4,3 @@
 (define-key projectile-mode-map (kbd "s-,") 'projectile-command-map)
 
 (provide 'init-projectile)
-

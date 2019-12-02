@@ -41,3 +41,8 @@ recentf
 projectile*
 /eshell
 desktops
+.cache/
+.emacscfg
+.lsp-session*
+smex-items
+README.html

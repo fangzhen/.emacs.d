@@ -1,34 +1,14 @@
 # A reasonable Emacs config
 
-This is my emacs configuration tree, continually used and tweaked
-since 2000, and it may be a good starting point for other Emacs
-users, especially those who are web developers. These days it's
-somewhat geared towards OS X, but it is known to also work on Linux
-and Windows.
+This my emacs configuration, running currently on Linux and emacs 26.
 
-Emacs itself comes with support for many programming languages. This
-config adds improved defaults and extended support for the following:
+The config is originally forked from https://github.com/purcell/emacs.d.git,
+but was heavily modified since then and won't sync with it any more.
+Thanks very much!
 
-* Ruby / Ruby on Rails
-* CSS / LESS / SASS / SCSS
-* HAML / Markdown / Textile / ERB
-* Clojure (via nrepl)
-* Javascript / Coffeescript
-* Python
-* PHP
-* Haskell
-* Erlang
-* Common Lisp (with Slime)
+I'll try to minimize the whole config by cleanup configurations and keep
+track with latest emacs version without much concern on compatibility.
 
-In particular, there's a nice config for *tab autocompletion*, and
-flycheck is used to immediately highlight syntax errors in Ruby, HAML,
-Python, Javascript, PHP and a number of other languages.
-
-## Requirements
-
-* Emacs 23 or greater (note that Emacs 24 is required for some
-  functionality, and will likely become the minimum required version
-  some time soon.)
 
 ## Installation
 
@@ -36,20 +16,11 @@ To install, clone this repo to `~/.emacs.d`, i.e. ensure that the
 `init.el` contained in this repo ends up at `~/.emacs.d/init.el`:
 
 ```
-git clone https://github.com/purcell/emacs.d.git ~/.emacs.d
+git clone https://github.com/fangzhen/emacs.d.git ~/.emacs.d
 ```
 
 Upon starting up Emacs for the first time, further third-party
 packages will be automatically downloaded and installed.
-
-## Important note about `ido`
-
-This config enables `ido-mode` completion in the minibuffer wherever
-possible, which might confuse you when trying to open files using
-<kbd>C-x C-f</kbd>, e.g. if you want to open a directory to use
-`dired` -- if you get stuck, use <kbd>C-f</kbd> to drop into the
-regular `find-file` prompt. (You might want to customize the
-`ido-show-dot-for-dired` variable if this is an issue for you.)
 
 ## Updates
 
@@ -69,23 +40,11 @@ create a file `~/.emacs.d/lisp/init-local.el` which looks like this:
 (provide 'init-local)
 ```
 
-Alternatively, fork the repo and hack away at the config to make it your own!
+## Programming Language support
 
-## Similar configs
+- Use LSP if possible
+- Use company for completion
+- Use ggtags as an alternative for LSP. check `toggle-ggtags-project-wide`
 
-You might also want to check out `emacs-starter-kit` and `emacs-prelude`.
-
-## Support / issues
-
-If you hit any problems, please first ensure that you are using the latest version
-of this code, and that you have updated your packages to the most recent available
-versions (see "Updates" above). If you still experience problems, go ahead and
-[file an issue on the github project](https://github.com/purcell/emacs.d).
-
--Steve Purcell
-
-<hr>
-
-[![](http://api.coderwall.com/purcell/endorsecount.png)](http://coderwall.com/purcell)
-
-[![](http://www.linkedin.com/img/webpromo/btn_liprofile_blue_80x15.png)](http://uk.linkedin.com/in/stevepurcell)
+## Detailed configs and tweaks
+Check for codes and comments in lisp/

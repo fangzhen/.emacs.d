@@ -1,3 +1,5 @@
 (require-package 'company)
-
+(global-company-mode)
+(setq company-auto-complete-chars "qazwsxedcrfvtgbyhnujmikolp._-")
+(setq company-idle-delay .25)
 (provide 'init-company)
