@@ -5,13 +5,13 @@
 (setq desktop-path (list user-emacs-directory)
       desktop-auto-save-timeout 600)
 (desktop-save-mode 1)
+(custom-set-variables
+ '(desktop-restore-eager 3))
 
 (defun desktop+-active-desktop ()
   "Show current active desktop."
   (interactive)
-  (message desktop-dirname)
-    )
-
+  (message desktop-dirname))
 
 (defadvice desktop-read (around trace-desktop-errors activate)
   (let ((debug-on-error t))
@@ -25,8 +25,7 @@
 
   (if (and saved-desktop-dirname (not (and (< 0 (length dirname)) dirname)))
    (funcall orig-fun saved-desktop-dirname)
-   (apply orig-fun dirname)
-  )
+   (apply orig-fun dirname))
   (advice-remove 'desktop-read #'desktop-read-saved)
 )
 
@@ -40,4 +39,6 @@
 (add-hook 'before-init-hook (advice-add 'desktop-read :around #'desktop-read-saved))
 (add-hook 'desktop-after-read-hook 'save-last-desktop)
 
+(if (get-buffer "*scratch*")
+    (kill-buffer "*scratch*"))
 (provide 'init-sessions)

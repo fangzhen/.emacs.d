@@ -12,8 +12,16 @@
                                  (interactive "bKill Buffer and window")
                                  (with-current-buffer b
                                    (kill-buffer-and-window))))
+;; Stay synced with disk files
+(global-auto-revert-mode t)
+;; Tab/space settings
+(require-package 'dtrt-indent)
+(setq-default
+ indent-tabs-mode nil)
 (setq
- indent-tabs-mode nil
+ dtrt-indent-mode t)
+
+(setq
  split-height-threshold 120
  split-width-threshold 100
  ;; https://www.emacswiki.org/emacs/SmoothScrolling
@@ -66,5 +74,10 @@
 ;; Remove trailing whitespaces on modified lines
 (require-package 'ws-butler)
 (ws-butler-global-mode)
-(setq ws-butler-keep-whitespace-before-point nil)
+(custom-set-variables
+ '(ws-butler-keep-whitespace-before-point nil)
+ ;; markdown-mode is set by default
+ '(ws-butler-global-exempt-modes nil))
+;; use ansi-term without prompt
+(global-set-key (kbd "s-t") (lambda () (interactive) (ansi-term "bash")))
 (provide 'init-misc)
