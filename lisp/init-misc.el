@@ -12,8 +12,14 @@
                                  (interactive "bKill Buffer and window")
                                  (with-current-buffer b
                                    (kill-buffer-and-window))))
+;; Avoid performance issue for very long line
+(global-so-long-mode 1)
+;; Disable backup totally
+(setq make-backup-files nil)
 ;; Stay synced with disk files
 (global-auto-revert-mode t)
+;; Disable annoying bell sound
+(setq ring-bell-function 'ignore)
 ;; Tab/space settings
 (require-package 'dtrt-indent)
 (setq-default
@@ -22,8 +28,8 @@
  dtrt-indent-mode t)
 
 (setq
- split-height-threshold 120
- split-width-threshold 100
+ split-height-threshold 10000
+ split-width-threshold 10000
  ;; https://www.emacswiki.org/emacs/SmoothScrolling
  ;; Don't jump half-screen when point move out
  scroll-step 1
@@ -75,9 +81,24 @@
 (require-package 'ws-butler)
 (ws-butler-global-mode)
 (custom-set-variables
- '(ws-butler-keep-whitespace-before-point nil)
- ;; markdown-mode is set by default
- '(ws-butler-global-exempt-modes nil))
+ '(ws-butler-keep-whitespace-before-point nil))
 ;; use ansi-term without prompt
-(global-set-key (kbd "s-t") (lambda () (interactive) (ansi-term "bash")))
+;; Switch to terminal in other window
+;; If ansi-term buffer exists, use it instead of create a new one.
+(global-set-key (kbd "s-t") (lambda () (interactive)
+                              (if (get-buffer "*ansi-term*")
+                                  (switch-to-buffer-other-window "*ansi-term*")
+                                (let ((buf (ansi-term "bash")))
+                                  (switch-to-buffer (other-buffer buf))
+                                  (switch-to-buffer-other-window buf)))))
+
+(defun copy-buffer-name ()
+  "Copy buffer name to clipboard."
+  (interactive)
+  (let ((bname (buffer-name)))
+    (with-temp-buffer
+      (insert bname)
+      (clipboard-kill-region (point-min) (point-max))))
+  (message "Buffer name copied to clipboard"))
+(global-set-key [mode-line mouse-3] 'copy-buffer-name)
 (provide 'init-misc)

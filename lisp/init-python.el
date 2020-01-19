@@ -2,4 +2,5 @@
 (defun lsp-set-cfg ()
     (let ((lsp-cfg `(:pyls (:configurationSources ("flake8")))))
       (lsp--set-configuration lsp-cfg)))
+(require-package 'yapfify)
 (provide 'init-python)

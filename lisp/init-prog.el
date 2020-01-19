@@ -9,22 +9,31 @@
   (if s (progn (ggtags-mode 1)
                (define-key ggtags-mode-map "\M-." nil))
     (ggtags-mode 0)))
+(use-package flycheck
+  :ensure t)
+(global-flycheck-mode)
+
 (use-package lsp-mode
   :ensure t
   :config
+  (setq lsp-prefer-flymake nil)
   ;; lsp extras
   (use-package lsp-ui
     :ensure t
     :config
     (setq lsp-ui-sideline-ignore-duplicate t)
-    (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+    (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+    (with-eval-after-load 'lsp-mode
+      (add-hook 'lsp-after-open-hook (lambda () (lsp-ui-flycheck-enable 1)))))
 
   (use-package company-lsp
     :ensure t
     :config
     (push 'company-lsp company-backends))
   (use-package yasnippet :ensure t) ; required by lsp-enable-snippet
-  (use-package lsp-treemacs :ensure t :commands lsp-treemacs-errors-list))
+  (use-package lsp-treemacs
+    :ensure t
+    :commands lsp-treemacs-errors-list))
 
 ;; Add function to toggle ggtags
 ;; Turn on: enable ggtages mode for all files in current project
@@ -76,6 +85,8 @@
 
 (require-package 'diff-hl)
 (add-hook 'prog-mode-hook 'diff-hl-mode)
+(add-hook 'prog-mode-hook 'highlight-symbol-mode)
+(add-hook 'prog-mode-hook 'highlight-symbol-nav-mode)
 (add-hook 'vc-dir-mode-hook 'diff-hl-mode)
 
 ;; Folding configs
