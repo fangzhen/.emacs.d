@@ -46,3 +46,4 @@ desktops
 .lsp-session*
 smex-items
 README.html
+.dir-locals.el
