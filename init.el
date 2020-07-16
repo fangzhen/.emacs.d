@@ -35,7 +35,7 @@
 
 ;; Configs for specific languages
 (require 'init-c)
-(require 'init-python)
+(require 'init-prog-lang)
 (require 'init-markdown)
 (require 'init-yaml)
 
