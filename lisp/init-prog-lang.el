@@ -14,20 +14,20 @@
   (add-hook 'before-save-hook #'lsp-organize-imports t t)
   )
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-(custom-set-variables
- '(lsp-gopls-env #s(hash-table
-                    data ("GOPROXY" "https://goproxy.io,direct")))
- '(lsp-clients-go-func-snippet-enabled nil)
- '(lsp-clients-go-gocode-completion-enabled nil)
- '(lsp-gopls-use-placeholders nil))
-(setq lsp-enable-snippet nil)
+(setq
+ lsp-gopls-env #s(hash-table
+                    data ("GOPROXY" "https://goproxy.io,direct"))
+ lsp-clients-go-func-snippet-enabled nil
+ lsp-clients-go-gocode-completion-enabled nil
+ lsp-gopls-use-placeholders nil
+ lsp-enable-snippet nil)
 
 ;;; rust
 (require-package 'rust-mode)
 (add-hook 'rust-mode-hook #'lsp-deferred)
-(custom-set-variables
-  '(rust-format-on-save t)
-  '(rust-format-show-buffer nil))
+(setq
+  rust-format-on-save t
+  rust-format-show-buffer nil)
 
 ;;; puppet
 (require-package 'puppet-mode)

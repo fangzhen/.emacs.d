@@ -10,6 +10,7 @@
     (save-buffer)
     (kill-current-buffer)))
 
+;; lsp-ui didn't work well with flymake now(2020.12)
 (use-package flycheck
   :ensure t)
 (global-flycheck-mode)
@@ -17,30 +18,20 @@
 (use-package lsp-mode
   :ensure t
   :config
-  (setq lsp-prefer-flymake nil)
+  (setq lsp-auto-configure t)
   ;; register globalls with high priority
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection "globalls")
                     :major-modes '(c-mode c++-mode objc-mode)
                     :priority -10
                     :server-id 'globalls))
-  ;; lsp extras
   (use-package lsp-ui
     :ensure t
     :config
-    (setq lsp-ui-sideline-ignore-duplicate t)
-    (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-    (with-eval-after-load 'lsp-mode
-      (add-hook 'lsp-after-open-hook (lambda () (lsp-ui-flycheck-enable 1)))))
-
-  (use-package company-lsp
-    :ensure t
-    :config
-    (push 'company-lsp company-backends))
-  (use-package yasnippet :ensure t) ; required by lsp-enable-snippet
+    (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+    (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
   (use-package lsp-treemacs
-    :ensure t
-    :commands lsp-treemacs-errors-list))
+    :ensure t))
 
 (defun disable-lsp-server-project-wide (disabled-servers)
   (interactive)

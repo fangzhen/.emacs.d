@@ -50,6 +50,11 @@
 (show-paren-mode 1)
 (electric-pair-mode 1)
 
+;; Performance
+;; lsp-mode's advise
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
 ;; Shift lines up and down with M-up and M-down. When paredit is enabled,
 ;; it will use those keybindings. For this reason, you might prefer to
 ;; use M-S-up and M-S-down, which will work even in lisp modes.
@@ -62,7 +67,7 @@
 
 ;; Cut/copy the current line if no region is active
 (require-package 'whole-line-or-region)
-(whole-line-or-region-mode t)
+(whole-line-or-region-global-mode t)
 (diminish 'whole-line-or-region-mode)
 
 ;; Display available keybindings
@@ -80,8 +85,7 @@
 ;; Remove trailing whitespaces on modified lines
 (require-package 'ws-butler)
 (ws-butler-global-mode)
-(custom-set-variables
- '(ws-butler-keep-whitespace-before-point nil))
+(setq ws-butler-keep-whitespace-before-point nil)
 ;; use ansi-term without prompt
 ;; Switch to terminal in other window
 ;; If ansi-term buffer exists, use it instead of create a new one.

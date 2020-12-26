@@ -50,6 +50,8 @@
        (treemacs-git-mode 'deferred))
       (`(t . _)
        (treemacs-git-mode 'simple))))
+  :hook
+  (after-init . (lambda() (save-selected-window (treemacs))))
   :bind
   (:map global-map
         ("M-0"       . treemacs-select-window)
@@ -62,5 +64,4 @@
 (use-package treemacs-projectile
   :after treemacs projectile
   :ensure t)
-(treemacs)
 (provide 'init-treemacs)
