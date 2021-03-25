@@ -59,11 +59,7 @@
 ;; it will use those keybindings. For this reason, you might prefer to
 ;; use M-S-up and M-S-down, which will work even in lisp modes.
 (require-package 'move-dup)
-(global-set-key [M-up] 'md-move-lines-up)
-(global-set-key [M-down] 'md-move-lines-down)
-(global-set-key [M-S-up] 'md-move-lines-up)
-(global-set-key [M-S-down] 'md-move-lines-down)
-(global-set-key (kbd "C-c p") 'md-duplicate-down)
+(global-move-dup-mode)
 
 ;; Cut/copy the current line if no region is active
 (require-package 'whole-line-or-region)
