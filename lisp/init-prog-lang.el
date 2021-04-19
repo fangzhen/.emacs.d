@@ -28,6 +28,9 @@
 (setq
   rust-format-on-save t
   rust-format-show-buffer nil)
+(use-package flycheck-rust
+  :ensure t
+  :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 ;;; puppet
 (require-package 'puppet-mode)
