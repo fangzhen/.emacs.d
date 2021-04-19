@@ -103,4 +103,7 @@
       (clipboard-kill-region (point-min) (point-max))))
   (message "Buffer name copied to clipboard"))
 (global-set-key [mode-line mouse-3] 'copy-buffer-name)
+
+;; org-mode
+(setq org-support-shift-select t)
 (provide 'init-misc)
