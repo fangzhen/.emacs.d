@@ -14,6 +14,8 @@
                                    (kill-buffer-and-window))))
 ;; Avoid performance issue for very long line
 (global-so-long-mode 1)
+;; Use short answer for yes-or-no-p
+(setq use-short-answers t)
 ;; Disable backup totally
 (setq make-backup-files nil)
 ;; Stay synced with disk files
