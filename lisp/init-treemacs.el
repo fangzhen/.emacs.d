@@ -51,7 +51,8 @@
       (`(t . _)
        (treemacs-git-mode 'simple))))
   :hook
-  (after-init . (lambda() (save-selected-window (treemacs))))
+  (emacs-startup . (lambda() (save-selected-window (treemacs))))
+  (server-after-make-frame . (lambda() (save-selected-window (treemacs))))
   :bind
   (:map global-map
         ("M-0"       . treemacs-select-window)
