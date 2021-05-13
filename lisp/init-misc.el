@@ -1,7 +1,6 @@
 ;;----------------------------------------------------------------------------
 ;; Misc config - yet to be placed in separate files
 ;;----------------------------------------------------------------------------
-;; Show line number and column number on mode line
 (require-package 'diminish)
 
 ;; Show line number and column number in mode line

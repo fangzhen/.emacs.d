@@ -75,6 +75,6 @@
          ("C-=" . origami-recursively-toggle-node)
          ("C-+" . origami-toggle-all-nodes)))
 
-(add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (provide 'init-prog)
