@@ -103,9 +103,15 @@
   (message "Buffer name copied to clipboard"))
 (global-set-key [mode-line mouse-3] 'copy-buffer-name)
 
-;; Don't open scratch buffer
+;; Don't open scratch buffer. Use ~/scratch.org instead
 (setq inhibit-startup-screen t
       initial-buffer-choice  nil)
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (if (not (cl-remove-if-not 'buffer-file-name (buffer-list)))
+                (find-file "~/scratch.org"))
+            (if (get-buffer "*scratch*")
+                (kill-buffer "*scratch*"))))
 (add-hook 'server-after-make-frame-hook (lambda ()
   (if (get-buffer "*scratch*")
       (kill-buffer "*scratch*"))))
