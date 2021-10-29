@@ -19,6 +19,7 @@
   :ensure t
   :config
   (setq lsp-auto-configure t)
+  (setq lsp-enable-file-watchers nil)
   ;; register globalls with high priority
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection "globalls")
@@ -29,7 +30,8 @@
     :ensure t
     :config
     (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-    (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
+    (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+    (define-key lsp-ui-mode-map (kbd "C-.") 'lsp-ui-peek-find-implementation))
   (use-package lsp-treemacs
     :ensure t))
 
