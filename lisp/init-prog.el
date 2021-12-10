@@ -23,9 +23,10 @@
   ;; register globalls with high priority
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection "globalls")
-                    :major-modes '(c-mode c++-mode objc-mode)
+                    :major-modes '(c-mode c++-mode objc-mode asm-mode cuda-mode)
                     :priority -10
                     :server-id 'globalls))
+  (add-to-list 'lsp-language-id-configuration '(asm-mode . "asm"))
   (use-package lsp-ui
     :ensure t
     :config

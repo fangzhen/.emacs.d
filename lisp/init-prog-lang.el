@@ -35,5 +35,8 @@
 ;;; puppet
 (require-package 'puppet-mode)
 
+;;; asm
+(add-hook 'asm-mode-hook #'lsp-deferred)
+
 (provide 'init-prog-lang)
 ;;; init-prog-lang ends here
