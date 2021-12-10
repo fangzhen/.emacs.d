@@ -34,6 +34,8 @@
 (require 'init-markdown)
 (require 'init-yaml)
 
+(require 'init-term)
+
 (require 'init-face)
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
