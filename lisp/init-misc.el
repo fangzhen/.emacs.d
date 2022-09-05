@@ -43,9 +43,6 @@
  ; Goto buffer beginning/end when PgUp/PgDown
  scroll-error-top-bottom t)
 
-;;; Newline behaviour
-(global-set-key (kbd "RET") 'newline-and-indent)
-
 ;; Use M+n/p to goto next/previous occurence of current symbol.
 (require-package 'highlight-symbol)
 (add-hook 'text-mode-hook 'highlight-symbol-mode)
