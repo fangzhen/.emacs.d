@@ -3,8 +3,13 @@
 ;;; Code:
 
 ;; Python
-(add-hook 'python-mode-hook #'lsp-deferred)
-(require-package 'yapfify)
+(use-package yapfify
+  :ensure t)
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp-deferred))))
 
 ;;; Go
 (require-package 'go-mode)
