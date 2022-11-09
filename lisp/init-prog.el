@@ -80,4 +80,10 @@
 
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
+(use-package magit
+  :ensure t
+  :config
+  (use-package magit-gerrit
+    :ensure t))
+
 (provide 'init-prog)
