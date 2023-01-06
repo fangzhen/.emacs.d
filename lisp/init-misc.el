@@ -76,6 +76,13 @@
 ;; Rectangle editing
 (cua-selection-mode t)
 
+;; yank primary selection
+(defun yank-primary-selection ()
+    (interactive)
+  (let ((primary (gui-get-primary-selection)))
+    (insert-for-yank primary)))
+(global-set-key (kbd "S-<insert>") 'yank-primary-selection)
+
 ;; Whitespaces
 ;; Show tab and trailing whitespaces
 (global-whitespace-mode t)

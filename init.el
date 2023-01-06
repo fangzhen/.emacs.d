@@ -27,10 +27,9 @@
 (require 'init-projectile)
 (require 'init-subword)
 (require 'init-prog)
-
-;; Configs for specific languages
-(require 'init-c)
+(require 'init-eglot)
 (require 'init-prog-lang)
+(require 'init-c)
 (require 'init-markdown)
 (require 'init-yaml)
 

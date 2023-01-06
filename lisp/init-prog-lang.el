@@ -5,43 +5,27 @@
 ;; Python
 (use-package yapfify
   :ensure t)
-(use-package lsp-pyright
-  :ensure t
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
-                          (lsp-deferred))))
+(add-hook 'python-mode-hook #'lsp-ensure)
 
 ;;; Go
-(require-package 'go-mode)
-(add-hook 'go-mode-hook #'lsp-deferred)
-(defun lsp-go-install-save-hooks ()
-  (add-hook 'before-save-hook #'lsp-format-buffer t t)
-  (add-hook 'before-save-hook #'lsp-organize-imports t t)
-  )
-(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-(setq
- lsp-gopls-env #s(hash-table
-                    data ("GOPROXY" "https://goproxy.io,direct"))
- lsp-clients-go-func-snippet-enabled nil
- lsp-clients-go-gocode-completion-enabled nil
- lsp-gopls-use-placeholders nil
- lsp-enable-snippet nil)
-
-;;; rust
-(require-package 'rust-mode)
-(add-hook 'rust-mode-hook #'lsp-deferred)
-(setq
-  rust-format-on-save t
-  rust-format-show-buffer nil)
-(use-package flycheck-rust
+(use-package go-mode
   :ensure t
-  :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
-
+  :config
+  (add-hook 'go-mode-hook #'lsp-ensure)
+  (add-hook 'go-mode-hook #'lsp-go-mode-hook)
+  )
+;;; rust
+(use-package rust-mode
+  :config
+  (add-hook 'rust-mode-hook #'lsp-ensure)
+  (setq
+   rust-format-on-save t
+   rust-format-show-buffer nil)
+  )
 ;;; puppet
-(require-package 'puppet-mode)
+(use-package puppet-mode)
 
 ;;; asm
-(add-hook 'asm-mode-hook #'lsp-deferred)
+(add-hook 'asm-mode-hook #'lsp-ensure)
 
 (provide 'init-prog-lang)
-;;; init-prog-lang ends here
