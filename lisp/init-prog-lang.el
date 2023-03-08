@@ -29,3 +29,6 @@
 (add-hook 'asm-mode-hook #'lsp-ensure)
 
 (provide 'init-prog-lang)
+
+;;; haskell
+(use-package haskell-mode)
