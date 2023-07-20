@@ -1,21 +1,13 @@
-;;----------------------------------------------------------------------------
-;; Navigate window layouts with "C-c <left>" and "C-c <right>"
-;;----------------------------------------------------------------------------
-(winner-mode 1)
+(global-set-key (kbd "M-<escape>") 'other-window)
+(global-set-key (kbd "s-<escape>") (lambda() (interactive) (other-window -1)))
 
-(global-set-key (kbd "s-b")  'windmove-left)
-(global-set-key (kbd "s-f") 'windmove-right)
-(global-set-key (kbd "s-p")    'windmove-up)
-(global-set-key (kbd "s-n")  'windmove-down)
+(global-set-key (kbd "C-S-<left>")  'windmove-left)
+(global-set-key (kbd "C-S-<right>") 'windmove-right)
+(global-set-key (kbd "C-S-<up>")    'windmove-up)
+(global-set-key (kbd "C-S-<down>")  'windmove-down)
 
-(global-set-key (kbd "C-s-<left>")  'windmove-left)
-(global-set-key (kbd "C-s-<right>") 'windmove-right)
-(global-set-key (kbd "C-s-<up>")    'windmove-up)
-(global-set-key (kbd "C-s-<down>")  'windmove-down)
-
-(global-set-key (kbd "C-x o") 'next-multiframe-window)
-(global-set-key (kbd "C-x p") 'previous-multiframe-window)
-
+(use-package auto-dim-other-buffers
+  :hook (after-init . auto-dim-other-buffers-mode ))
 ;;----------------------------------------------------------------------------
 ;; Rearrange split windows
 ;;----------------------------------------------------------------------------

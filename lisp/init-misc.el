@@ -126,4 +126,11 @@
 
 ;; org-mode
 (setq org-support-shift-select t)
+
+;; Disable mouse-highlight for clickable text and only follow link on mouse-2
+;; These configs makes a resonable mouse selection behavior for me.
+(setq mouse-highlight nil)
+(setq mouse-1-click-follows-link nil)
+
+
 (provide 'init-misc)

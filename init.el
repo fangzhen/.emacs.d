@@ -19,7 +19,6 @@
 (require 'init-ivy)
 (require 'init-recentf)
 (require 'init-windows)
-(require 'init-hippie-expand)
 
 ;; Common configs for coding
 (require 'init-treemacs)

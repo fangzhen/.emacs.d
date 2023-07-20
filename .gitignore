@@ -39,6 +39,7 @@ ido.last
 recentf
 .emacs-buffers
 projectile*
+projects
 /eshell
 desktops
 .cache/

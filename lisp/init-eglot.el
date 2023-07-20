@@ -1,10 +1,11 @@
-;; https://github.com/joaotavora/eglot/issues/889
 (use-package eglot
   :config
+  ;; Flymake getting clobbered by doclets/types in Eldoc:
+  ;; https://github.com/joaotavora/eglot/issues/889
   (add-hook 'eglot-managed-mode-hook
-          #'(lambda ()
-              (setq-local eldoc-documentation-strategy
-                          #'eldoc-documentation-compose)))
+            #'(lambda ()
+                (setq-local eldoc-documentation-strategy
+                            #'eldoc-documentation-compose)))
   )
 
 ;; language-specific configs
