@@ -19,4 +19,7 @@
                    (abbreviate-file-name (buffer-file-name))
                  "%b"))))
 
+;; Default to maximize frame
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 (provide 'init-gui-frames)
