@@ -1,4 +1,4 @@
-(require-package 'ibuffer-vc)
+(use-package ibuffer-vc)
 
 (defun ibuffer-set-up-preferred-filters ()
   (ibuffer-vc-set-filter-groups-by-vc-root)

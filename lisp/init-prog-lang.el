@@ -4,12 +4,12 @@
 
 ;; Python
 (use-package yapfify
-  :ensure t)
+  )
 (add-hook 'python-mode-hook #'lsp-ensure)
 
 ;;; Go
 (use-package go-mode
-  :ensure t
+  
   :config
   (add-hook 'go-mode-hook #'lsp-ensure)
   (add-hook 'go-mode-hook #'lsp-go-mode-hook)

@@ -14,11 +14,11 @@
 
 ;; lsp-ui didn't work well with flymake now(2020.12)
 (use-package flycheck
-  :ensure t)
+  )
 (global-flycheck-mode)
 
 (use-package lsp-mode
-  :ensure t
+  
   :config
   (setq lsp-auto-configure t)
   (setq lsp-enable-file-watchers nil)
@@ -30,13 +30,13 @@
                     :server-id 'globalls))
   (add-to-list 'lsp-language-id-configuration '(asm-mode . "asm"))
   (use-package lsp-ui
-    :ensure t
+    
     :config
     (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
     (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
     (define-key lsp-ui-mode-map (kbd "C-.") 'lsp-ui-peek-find-implementation))
   (use-package lsp-treemacs
-    :ensure t))
+    ))
 
 (defun lsp-ensure() (lsp-deferred))
 
