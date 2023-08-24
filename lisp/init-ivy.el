@@ -14,6 +14,6 @@
   (use-package smex ; for recent used commands list on top
     ))
 (use-package swiper
-  :bind (:map ivy-mode-map
-   ("C-s" . swiper-isearch)))
+  ;; double C-s will search last term
+  :bind ("C-s" . swiper-isearch))
 (provide 'init-ivy)

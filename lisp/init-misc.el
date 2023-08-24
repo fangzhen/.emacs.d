@@ -5,7 +5,10 @@
 (column-number-mode t)
 (line-number-mode t)
 
-(global-hl-line-mode t)
+;; Enable hl-line-mode for most modes, but not all (e.g. vterm-mode).
+(add-hook 'prog-mode-hook #'hl-line-mode)
+(add-hook 'text-mode-hook #'hl-line-mode)
+
 (blink-cursor-mode t)
 
 ;; Kill buffer and close its window

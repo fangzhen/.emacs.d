@@ -1,10 +1,10 @@
 (global-set-key (kbd "M-<escape>") 'other-window)
 (global-set-key (kbd "s-<escape>") (lambda() (interactive) (other-window -1)))
 
-(global-set-key (kbd "C-S-<left>")  'windmove-left)
-(global-set-key (kbd "C-S-<right>") 'windmove-right)
-(global-set-key (kbd "C-S-<up>")    'windmove-up)
-(global-set-key (kbd "C-S-<down>")  'windmove-down)
+(global-set-key (kbd "C-S-h")  'windmove-left)
+(global-set-key (kbd "C-S-l") 'windmove-right)
+(global-set-key (kbd "C-S-k")    'windmove-up)
+(global-set-key (kbd "C-S-j")  'windmove-down)
 
 (use-package auto-dim-other-buffers
   :hook (after-init . auto-dim-other-buffers-mode ))

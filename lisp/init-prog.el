@@ -26,17 +26,14 @@
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 ;; Alternative folding provider, can be enabled in mode-hooks
 (use-package origami
-  
   :bind (:map origami-mode-map
          ("C-=" . origami-recursively-toggle-node)
          ("C-+" . origami-toggle-all-nodes)))
 
 
 (use-package magit
-  
   :config
   (use-package magit-gerrit
-    
     :config
     (setq-default magit-gerrit-remote "gerrit")
     (setq-default magit-gerrit-push-to 'for)

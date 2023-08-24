@@ -1,4 +1,7 @@
 (use-package eglot
+  :init
+  ;; Disable inlay hint. A little annoying for me.
+  (setq eglot-ignored-server-capabilities '(:inlayHintProvider))
   :config
   ;; Flymake getting clobbered by doclets/types in Eldoc:
   ;; https://github.com/joaotavora/eglot/issues/889

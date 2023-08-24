@@ -28,7 +28,7 @@
 (require 'init-prog)
 (require 'init-eglot)
 (require 'init-prog-lang)
-(require 'init-c)
+;(require 'init-c)
 (require 'init-markdown)
 (require 'init-yaml)
 

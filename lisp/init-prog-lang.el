@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
+;; TODO(fangzhen) if this works well, remove hooks for specific modes;
+(add-hook 'prog-mode-hook 'lsp-ensure)
+
 ;; Python
 (use-package yapfify
   )
@@ -9,7 +12,6 @@
 
 ;;; Go
 (use-package go-mode
-  
   :config
   (add-hook 'go-mode-hook #'lsp-ensure)
   (add-hook 'go-mode-hook #'lsp-go-mode-hook)
