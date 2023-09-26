@@ -122,15 +122,15 @@
 ;; Don't open scratch buffer. Use ~/scratch.org instead
 (setq inhibit-startup-screen t
       initial-buffer-choice  nil)
-(add-hook 'emacs-startup-hook
-          (lambda ()
-            (if (not (cl-remove-if-not 'buffer-file-name (buffer-list)))
-                (find-file "~/scratch.org"))
-            (if (get-buffer "*scratch*")
-                (kill-buffer "*scratch*"))))
-(add-hook 'server-after-make-frame-hook (lambda ()
+
+;; use scratch.org instead of *scratch*
+(defun setup_scratch (daemon)
+  (if (and (not daemon) (not (cl-remove-if-not 'buffer-file-name (buffer-list))))
+      (find-file "~/scratch.org"))
   (if (get-buffer "*scratch*")
-      (kill-buffer "*scratch*"))))
+      (kill-buffer "*scratch*")))
+(add-hook 'emacs-startup-hook (lambda () (setup_scratch (daemonp))))
+(add-hook 'server-after-make-frame-hook (lambda () (setup_scratch nil)))
 
 ;; org-mode
 (setq org-support-shift-select t)
