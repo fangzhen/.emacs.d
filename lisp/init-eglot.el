@@ -9,6 +9,12 @@
             #'(lambda ()
                 (setq-local eldoc-documentation-strategy
                             #'eldoc-documentation-compose)))
+  (add-to-list 'eglot-server-programs
+               `((c-mode c++-mode)
+                 . ,(eglot-alternatives
+                     '("clangd" "ccls" "globalls"))))
+  (add-to-list 'eglot-server-programs
+               '(asm-mode . ("globalls")))
   )
 
 ;; language-specific configs
@@ -17,10 +23,27 @@
   (setenv "GOPROXY" '"https://goproxy.io,direct")
   )
 
+(defun customize-lsp-servers ()
+  ;; dir-local.el is loaded after mode-hooks.
+  ;; Load dir-local variables manually.
+  (hack-dir-local-variables-non-file-buffer)
+  (if (boundp 'custom-lsp-servers)
+      (if (not (local-variable-p 'eglot-server-programs))
+          (progn
+            (make-local-variable 'eglot-server-programs)
+            (setq eglot-server-programs (append custom-lsp-servers eglot-server-programs))
+            ))))
 ;; only auto-start eglot inside projectile projects
-(defun lsp-ensure() (if (projectile-project-p) (eglot-ensure)))
-;; TODO
-(defun disable-lsp-server-project-wide (disabled-servers)
-  (interactive)
-)
+(defun lsp-ensure() (if (projectile-project-p) (progn (customize-lsp-servers) (eglot-ensure))))
+
+(defun setup-lsp-server-project-wide (mode server)
+  (if (not (boundp 'custom-lsp-servers))
+      (setq-local custom-lsp-servers ()))
+  (add-to-list 'custom-lsp-servers (list mode server))
+  (projectile-add-dir-local-variable nil . ('custom-lsp-servers custom-lsp-servers))
+
+  (message "You need to restart eglot to make new lsp-server take effect for current session. Try `'eglot-shutdown`' then `'eglot`'")
+  )
+
+;(setup-lsp-server-project-wide 'c-mode "globallss")
 (provide 'init-eglot)

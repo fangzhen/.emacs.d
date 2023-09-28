@@ -2,9 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;; TODO(fangzhen) if this works well, remove hooks for specific modes;
-(add-hook 'prog-mode-hook 'lsp-ensure)
-
 ;; Python
 (use-package yapfify
   )
@@ -27,10 +24,16 @@
 ;;; puppet
 (use-package puppet-mode)
 
-;;; asm
+;;; asm, c, c++
 (add-hook 'asm-mode-hook #'lsp-ensure)
+(add-hook 'c-mode-hook #'lsp-ensure)
+(add-hook 'c++-mode-hook #'lsp-ensure)
 
-(provide 'init-prog-lang)
+(defun enable-globalls-for-project ()
+  (interactive)
+  (setup-lsp-server-project-wide 'c-mode "globalls"))
 
 ;;; haskell
 (use-package haskell-mode)
+
+(provide 'init-prog-lang)
