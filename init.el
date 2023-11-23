@@ -30,6 +30,7 @@
 (require 'init-prog-lang)
 ;(require 'init-c)
 (require 'init-markdown)
+(require 'init-org)
 (require 'init-yaml)
 
 (require 'init-term)
