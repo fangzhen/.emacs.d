@@ -33,7 +33,7 @@
 (require 'init-org)
 (require 'init-yaml)
 
-(require 'init-term)
+(require 'init-xterm)
 
 (require 'init-face)
 ;;----------------------------------------------------------------------------

@@ -142,4 +142,8 @@
   (pdf-tools-install)
   )
 
+;; Use vterm and allow multiple vterm buffers
+(use-package vterm)
+(use-package multi-vterm)
+
 (provide 'init-misc)
