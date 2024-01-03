@@ -12,7 +12,7 @@
 (blink-cursor-mode t)
 
 ;; Kill buffer and close its window
-(global-set-key (kbd "C-x j") '(lambda (b)
+(global-set-key (kbd "C-x j") #'(lambda (b)
                                  (interactive "bKill Buffer and window")
                                  (with-current-buffer b
                                    (kill-buffer-and-window))))

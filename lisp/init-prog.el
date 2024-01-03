@@ -31,13 +31,6 @@
          ("C-+" . origami-toggle-all-nodes)))
 
 
-(use-package magit
-  :config
-  (use-package magit-gerrit
-    :config
-    (setq-default magit-gerrit-remote "gerrit")
-    (setq-default magit-gerrit-push-to 'for)
-    (setq-default magit-gerrit-push-format "refs/%s%s%%topic=%s")
-    ))
+(use-package magit)
 
 (provide 'init-prog)
