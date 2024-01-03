@@ -38,9 +38,14 @@
 (require 'init-face)
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
+;; I don't load the custom-file here, since 'customize' saves
+;; too many configs than I needed.
+;; `custom-file-in-action` is a good place for configs that are intended to be
+;; out of version control. You need to edit it manually.
 ;;----------------------------------------------------------------------------
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(when (file-exists-p custom-file)
-  (load custom-file))
+(setq custom-file-in-action (expand-file-name "custom.in.action.el" user-emacs-directory))
+(when (file-exists-p custom-file-in-action)
+  (load custom-file-in-action))
 
 (provide 'init)
