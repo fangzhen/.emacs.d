@@ -36,4 +36,7 @@
 ;;; haskell
 (use-package haskell-mode)
 
+;;; dart
+(use-package dart-mode)
+
 (provide 'init-prog-lang)
