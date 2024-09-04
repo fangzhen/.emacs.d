@@ -8,6 +8,8 @@
   (add-hook 'vc-dir-mode-hook 'diff-hl-mode)
   )
 
+(setq treesit-font-lock-level 4)
+
 ;; Folding configs
 (setq hs-hide-show-all-next nil)
 (defun hs-toggle-hiding-all ()

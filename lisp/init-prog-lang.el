@@ -13,14 +13,14 @@
   (add-hook 'go-mode-hook #'lsp-ensure)
   (add-hook 'go-mode-hook #'lsp-go-mode-hook)
   )
+
 ;;; rust
 (use-package rust-mode
   :config
   (add-hook 'rust-mode-hook #'lsp-ensure)
   (setq
    rust-format-on-save t
-   rust-format-show-buffer nil)
-  )
+  ))
 ;;; puppet
 (use-package puppet-mode)
 
@@ -38,5 +38,9 @@
 
 ;;; dart
 (use-package dart-mode)
+
+;;; lisp
+(use-package rainbow-delimiters)
+(add-hook 'lisp-data-mode-hook #'rainbow-delimiters-mode)
 
 (provide 'init-prog-lang)

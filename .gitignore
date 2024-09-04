@@ -3,6 +3,7 @@
 /auto-save-list
 /.session
 /custom.el
+/custom.in.action.el
 *.elc
 CVS
 .svn
