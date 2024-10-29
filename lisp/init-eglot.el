@@ -3,6 +3,8 @@
   ;; Disable inlay hint. A little annoying for me.
   (setq eglot-ignored-server-capabilities '(:inlayHintProvider))
   :config
+  ;; event buffer could cause bad performance
+  (setq eglot-events-buffer-size 0)
   ;; Flymake getting clobbered by doclets/types in Eldoc:
   ;; https://github.com/joaotavora/eglot/issues/889
   (add-hook 'eglot-managed-mode-hook
@@ -22,7 +24,6 @@
   (add-hook 'before-save-hook #'eglot-format-buffer 0 t)
   (setenv "GOPROXY" '"https://goproxy.io,direct")
   )
-
 (defun customize-lsp-servers ()
   ;; dir-local.el is loaded after mode-hooks.
   ;; Load dir-local variables manually.
