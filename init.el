@@ -19,6 +19,8 @@
 (require 'init-ivy)
 (require 'init-recentf)
 (require 'init-windows)
+(require 'init-xterm)
+(require 'init-face)
 
 ;; Common configs for coding
 (require 'init-treemacs)
@@ -34,9 +36,9 @@
 (require 'init-org)
 (require 'init-yaml)
 
-(require 'init-xterm)
 
-(require 'init-face)
+(require 'init-ai)
+
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
 ;; I don't load the custom-file here, since 'customize' saves
@@ -50,3 +52,16 @@
   (load custom-file-in-action))
 
 (provide 'init)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-vc-selected-packages
+   '((evedel :url "https://github.com/daedsidog/evedel" :branch "master"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

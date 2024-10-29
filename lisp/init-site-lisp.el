@@ -1,4 +1,5 @@
 ;;; Set load path
+(require 'cl-lib)
 
 (defun sanityinc/add-subdirs-to-load-path (parent-dir)
   "Adds every non-hidden subdir of PARENT-DIR to `load-path'."
