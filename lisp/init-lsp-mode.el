@@ -1,4 +1,4 @@
-;;; Deprecated; Not maintained any more
+;;; init-lsp-mode --- lsp mode initialization
 
 (setq xref-prompt-for-identifier nil)
 
@@ -12,13 +12,11 @@
     (save-buffer)
     (kill-current-buffer)))
 
-;; lsp-ui didn't work well with flymake now(2020.12)
-(use-package flycheck
-  )
+;; lsp-mode seems work better with flycheck
+(use-package flycheck)
 (global-flycheck-mode)
 
 (use-package lsp-mode
-  
   :config
   (setq lsp-auto-configure t)
   (setq lsp-enable-file-watchers nil)
@@ -30,13 +28,13 @@
                     :server-id 'globalls))
   (add-to-list 'lsp-language-id-configuration '(asm-mode . "asm"))
   (use-package lsp-ui
-    
     :config
     (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
     (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
     (define-key lsp-ui-mode-map (kbd "C-.") 'lsp-ui-peek-find-implementation))
-  (use-package lsp-treemacs
-    ))
+  (use-package lsp-treemacs)
+  (use-package lsp-ivy)
+  )
 
 (defun lsp-ensure() (lsp-deferred))
 

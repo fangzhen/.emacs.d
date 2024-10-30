@@ -4,7 +4,7 @@
   (setq eglot-ignored-server-capabilities '(:inlayHintProvider))
   :config
   ;; event buffer could cause bad performance
-  (setq eglot-events-buffer-size 0)
+  (setq eglot-events-buffer-size nil)
   ;; Flymake getting clobbered by doclets/types in Eldoc:
   ;; https://github.com/joaotavora/eglot/issues/889
   (add-hook 'eglot-managed-mode-hook
@@ -17,7 +17,18 @@
                      '("clangd" "ccls" "globalls"))))
   (add-to-list 'eglot-server-programs
                '(asm-mode . ("globalls")))
+  (defun vue-eglot-init-options ()
+    (let ((tsdk-path (expand-file-name
+                      "lib"
+                      (string-trim-right (shell-command-to-string "npm list --global --parseable typescript | head -n1"))
+                      )))
+      `( :typescript ( :tsdk ,tsdk-path)
+         :vue (:hybridMode :json-false)
+         )))
+  (add-to-list 'eglot-server-programs
+               `(vue-mode . ("vue-language-server" "--stdio" :initializationOptions ,(vue-eglot-init-options))))
   )
+
 
 ;; language-specific configs
 (defun lsp-go-mode-hook ()

@@ -48,23 +48,11 @@
   :config
   (add-hook 'typescript-ts-mode-hook #'lsp-ensure)
   (add-hook 'typescript-ts-mode-hook (lambda () (setq-local tab-width typescript-ts-mode-indent-offset)))
+  )
 
-)
 ;;vue
 (define-derived-mode vue-mode typescript-ts-mode "Vue mode")
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
-(defun vue-eglot-init-options ()
-  (let ((tsdk-path (expand-file-name
-                    "lib"
-                    (string-trim-right (shell-command-to-string "npm list --global --parseable typescript | head -n1"))
-                    )))
-    `( :typescript ( :tsdk ,tsdk-path)
-       :vue (:hybridMode :json-false)
-       :completion (:maxItemsToResolve 10)
-       )))
-
-(add-to-list 'eglot-server-programs
-             `(vue-mode . ("vue-language-server" "--stdio" :initializationOptions ,(vue-eglot-init-options))))
 (add-hook 'vue-mode-hook #'lsp-ensure)
 
 ;;; lisp
