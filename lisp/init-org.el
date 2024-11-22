@@ -6,6 +6,7 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((dot . t))) ; this line activates dot
+(setq org-export-allow-bind-keywords t)
 
 (require 'ox-beamer)
 (defun org-beamer-export-to-pdf-async () (interactive) (org-beamer-export-to-pdf t))
@@ -66,4 +67,36 @@
 ;; TODO(fangzhen) This may break references
 (advice-add 'org-html-special-block :filter-return #'org-html-body-remove-id)
 (advice-add 'org-html-paragraph :filter-return #'org-html-body-remove-id)
+
+;; Add jekyll front matter to published html by setting `':publishing-function`
+;; to `org-html-publish-with-jekyll-front-matter`
+(org-export-define-derived-backend 'jekyll-html 'html
+  :options-alist
+  '((:jekyll-layout "JEKYLL_LAYOUT" nil nil t)
+    (:jekyll-tags "JEKYLL_TAGS" nil nil t)
+    ))
+(defun org-html-publish-with-jekyll-front-matter (plist filename pub-dir)
+  (let* ((export-options (org-export-get-environment 'jekyll-html))
+
+         (layout (or (plist-get export-options :jekyll-layout) "post"))
+         (title (or (mapconcat 'identity (plist-get export-options :title) " ") "Untitled"))
+         (subtitle (or (mapconcat 'identity (plist-get export-options :subtitle) " ") ""))
+         (date (or (plist-get export-options :date) "1970-01-01"))
+         (tags (or (plist-get export-options :jekyll-tags) ""))
+
+         (exported-file (org-html-publish-to-html plist filename pub-dir)))
+      (with-temp-buffer
+        (insert-file-contents exported-file)
+        ;; Insert Jekyll Front Matter
+        (goto-char (point-min))
+        (insert "---\n")
+        (insert (format "title: \"%s\"\n" (if subtitle (concat title ": " subtitle) title)))
+        (insert (format "date: %s\n" date))
+        (insert (format "layout: %s\n" layout))
+        (insert "---\n\n")
+
+        (write-region (point-min) (point-max) exported-file))
+    ))
+
+
 (provide 'init-org)
