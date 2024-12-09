@@ -1,3 +1,8 @@
+;;; init-company.el --- Configuration for Company mode
+
+;;; Commentary:
+;;; Code:
+
 (use-package company
   :config
   (global-company-mode)
@@ -17,7 +22,7 @@
 
   (setq company-require-match nil)
 
-  ;; Customize to allow '(' as seperator of filename
+  ;; Customize to allow '(' as separator of filename
   ;; See the third regexp which added `\(` to original.
   (setq company-files--regexps
     (let* ((root (if (eq system-type 'windows-nt)
@@ -29,4 +34,6 @@
             (concat "\\(?:[ \t=\[\(]\\|^\\)\\(" begin "[^ \t\n]*\\)"))))
   ;; orig   (concat "\\(?:[ \t=\[  ]\\|^\\)\\(" begin "[^ \t\n]*\\)"))))
 )
+
 (provide 'init-company)
+;;; init-company.el ends here

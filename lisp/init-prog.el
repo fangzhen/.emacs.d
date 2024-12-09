@@ -1,3 +1,8 @@
+;;; init-prog.el --- Configuration for programming modes
+
+;;; Commentary:
+;;; Code:
+
 (setq xref-prompt-for-identifier nil)
 
 (use-package diff-hl
@@ -26,13 +31,14 @@
             (define-key hs-minor-mode-map (kbd "C-+") 'hs-toggle-hiding-all)))
 
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
 ;; Alternative folding provider, can be enabled in mode-hooks
 (use-package origami
   :bind (:map origami-mode-map
          ("C-=" . origami-recursively-toggle-node)
          ("C-+" . origami-toggle-all-nodes)))
 
-
 (use-package magit)
 
 (provide 'init-prog)
+;;; init-prog.el ends here

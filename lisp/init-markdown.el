@@ -1,3 +1,8 @@
+;;; init-markdown.el --- Configuration for Markdown mode
+
+;;; Commentary:
+;;; Code:
+
 (use-package markdown-mode
   :init
   (setq auto-mode-alist
@@ -7,3 +12,4 @@
 )
 
 (provide 'init-markdown)
+;;; init-markdown.el ends here

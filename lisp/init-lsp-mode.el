@@ -1,4 +1,7 @@
-;;; init-lsp-mode --- lsp mode initialization
+;;; init-lsp-mode.el --- Configuration for LSP mode
+
+;;; Commentary:
+;;; Code:
 
 (setq xref-prompt-for-identifier nil)
 
@@ -12,7 +15,7 @@
     (save-buffer)
     (kill-current-buffer)))
 
-;; lsp-mode seems work better with flycheck
+;; lsp-mode seems to work better with flycheck
 (use-package flycheck)
 (global-flycheck-mode)
 
@@ -66,3 +69,4 @@
    lsp-enable-snippet nil))
 
 (provide 'init-lsp-mode)
+;;; init-lsp-mode.el ends here

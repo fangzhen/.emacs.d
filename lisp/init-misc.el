@@ -1,6 +1,8 @@
-;;----------------------------------------------------------------------------
-;; Misc config - yet to be placed in separate files
-;;----------------------------------------------------------------------------
+;;; init-misc.el --- Miscellaneous configurations
+
+;;; Commentary:
+;;; Code:
+
 ;; Show line number and column number in mode line
 (column-number-mode t)
 (line-number-mode t)
@@ -16,14 +18,19 @@
                                  (interactive "bKill Buffer and window")
                                  (with-current-buffer b
                                    (kill-buffer-and-window))))
+
 ;; Use short answer for yes-or-no-p
 (setq use-short-answers t)
+
 ;; Disable backup totally
 (setq make-backup-files nil)
+
 ;; Stay synced with disk files
 (global-auto-revert-mode t)
+
 ;; Disable annoying bell sound
 (setq ring-bell-function 'ignore)
+
 ;; Tab/space settings
 (use-package dtrt-indent
   :init
@@ -42,13 +49,14 @@
  ; Goto buffer beginning/end when PgUp/PgDown
  scroll-error-top-bottom t)
 
-;; Use M+n/p to goto next/previous occurence of current symbol.
+;; Use M+n/p to goto next/previous occurrence of current symbol.
 (use-package highlight-symbol
   :hook
   (text-mode-hook . highlight-symbol-mode)
   (text-mode-hook . highlight-symbol-nav-mode)
 )
-;; auto insert closing delimiters
+
+;; Auto insert closing delimiters
 (electric-pair-mode 1)
 
 ;; Performance
@@ -62,28 +70,28 @@
 (use-package move-dup
   :config
   (global-move-dup-mode)
-  )
+)
 
 ;; Cut/copy the current line if no region is active
 (use-package whole-line-or-region
   :config
   (whole-line-or-region-global-mode t)
   :diminish whole-line-or-region-mode
-  )
+)
 
 ;; Display available keybindings
 (use-package which-key
   :config
   (which-key-mode 1)
   :diminish which-key-mode
-  )
+)
 
 ;; Rectangle editing
 (cua-selection-mode t)
 
-;; yank primary selection
 (defun yank-primary-selection ()
-    (interactive)
+  "Yank the primary selection."
+  (interactive)
   (let ((primary (gui-get-primary-selection)))
     (insert-for-yank primary)))
 (global-set-key (kbd "S-<insert>") 'yank-primary-selection)
@@ -92,14 +100,16 @@
 ;; Show tab and trailing whitespaces
 (global-whitespace-mode t)
 (setq whitespace-style '(face trailing tabs tab-mark))
+
 ;; Remove trailing whitespaces on modified lines
 (use-package ws-butler
   :config
   (ws-butler-global-mode)
   :init
   (setq ws-butler-keep-whitespace-before-point nil)
-  )
-;; use ansi-term without prompt
+)
+
+;; Use ansi-term without prompt
 ;; Switch to terminal in other window
 ;; If ansi-term buffer exists, use it instead of create a new one.
 (global-set-key (kbd "s-t") (lambda () (interactive)
@@ -123,8 +133,9 @@
 (setq inhibit-startup-screen t
       initial-buffer-choice  nil)
 
-;; use scratch.org instead of *scratch*
+;; Use scratch.org instead of *scratch*
 (defun setup_scratch (daemon)
+  "Setup scratch buffer behavior."
   (if (and (not daemon) (not (cl-remove-if-not 'buffer-file-name (buffer-list))))
       (find-file "~/scratch.org"))
   (if (get-buffer "*scratch*")
@@ -133,17 +144,18 @@
 (add-hook 'server-after-make-frame-hook (lambda () (setup_scratch nil)))
 
 ;; Disable mouse-highlight for clickable text and only follow link on mouse-2
-;; These configs makes a resonable mouse selection behavior for me.
+;; These configs make a reasonable mouse selection behavior.
 (setq mouse-highlight nil)
 (setq mouse-1-click-follows-link nil)
 
 (use-package pdf-tools
   :config
   (pdf-tools-install)
-  )
+)
 
 ;; Use vterm and allow multiple vterm buffers
 (use-package vterm)
 (use-package multi-vterm)
 
 (provide 'init-misc)
+;;; init-misc.el ends here

@@ -1,3 +1,8 @@
+;;; init-eglot.el --- Configuration for Eglot
+
+;;; Commentary:
+;;; Code:
+
 (use-package eglot
   :init
   ;; Disable inlay hint. A little annoying for me.
@@ -27,14 +32,14 @@
          )))
   (add-to-list 'eglot-server-programs
                `(vue-mode . ("vue-language-server" "--stdio" :initializationOptions ,(vue-eglot-init-options))))
-  )
-
+)
 
 ;; language-specific configs
 (defun lsp-go-mode-hook ()
   (add-hook 'before-save-hook #'eglot-format-buffer 0 t)
   (setenv "GOPROXY" '"https://goproxy.io,direct")
-  )
+)
+
 (defun customize-lsp-servers ()
   ;; dir-local.el is loaded after mode-hooks.
   ;; Load dir-local variables manually.
@@ -45,8 +50,10 @@
             (make-local-variable 'eglot-server-programs)
             (setq eglot-server-programs (append custom-lsp-servers eglot-server-programs))
             ))))
+
 ;; only auto-start eglot inside projectile projects
-(defun lsp-ensure() (if (projectile-project-p) (progn (customize-lsp-servers) (eglot-ensure))))
+(defun lsp-ensure()
+  (if (projectile-project-p) (progn (customize-lsp-servers) (eglot-ensure))))
 
 (defun setup-lsp-server-project-wide (mode server)
   (if (not (boundp 'custom-lsp-servers))
@@ -55,7 +62,8 @@
   (projectile-add-dir-local-variable nil . ('custom-lsp-servers custom-lsp-servers))
 
   (message "You need to restart eglot to make new lsp-server take effect for current session. Try `'eglot-shutdown`' then `'eglot`'")
-  )
+)
 
 ;(setup-lsp-server-project-wide 'c-mode "globallss")
 (provide 'init-eglot)
+;;; init-eglot.el ends here

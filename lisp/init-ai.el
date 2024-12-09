@@ -1,4 +1,8 @@
-;;; init-ai -- AI assistants
+;;; init-ai.el --- Configuration for AI assistants
+
+;;; Commentary:
+;;; Code:
+
 (use-package load-env-vars)
 (use-package gptel
   :config
@@ -25,25 +29,25 @@
       :models '(anthropic/claude-3.5-sonnet)))
 
   (defun gptel-send-with-options ()
-    "Send query.  With prefix ARG open gptel's menu instead."
+    "Send query. With prefix ARG open gptel's menu instead."
     (interactive)
     (gptel--suffix-send (transient-args 'gptel-menu)))
-  )
+)
 
-;;; elysium can automatically apply AI-generated changes
+;; elysium can automatically apply AI-generated changes
 (use-package elysium)
 
-;;; evedel is too complicated to me. But the thought behind is inspiring.
+;; evedel is too complicated to me. But the thought behind is inspiring.
 (unless (package-installed-p 'evedel)
   (package-vc-install
- '(evedel :url "https://github.com/daedsidog/evedel"
-         :branch "master")))
+   '(evedel :url "https://github.com/daedsidog/evedel"
+            :branch "master")))
 (use-package evedel)
 
 (unless (package-installed-p 'aider)
   (package-vc-install
- '(aider :url "https://github.com/tninja/aider.el"
-         :branch "main")))
+   '(aider :url "https://github.com/tninja/aider.el"
+           :branch "main")))
 (use-package aider
   ;TODO(fangzhen) :vc will be available in emacs 30, then we can replace package-vc-install with:
   ;:vc (:url "https://github.com/oantolin/tninja/aider.el")
@@ -52,5 +56,5 @@
   ;; Set a key binding for the transient menu
   (global-set-key (kbd "C-c a") 'aider-transient-menu))
 
-
 (provide 'init-ai)
+;;; init-ai.el ends here

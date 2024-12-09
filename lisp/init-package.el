@@ -1,3 +1,8 @@
+;;; init-package.el --- Configuration for package management
+
+;;; Commentary:
+;;; Code:
+
 (require 'package)
 
 ;;; Also use Melpa for most packages
@@ -7,9 +12,10 @@
 ;; Bug https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 ;; Bug https://debbugs.gnu.org/cgi/bugreport.cgi?bug=33825
-(setq  package-check-signature nil)
+(setq package-check-signature nil)
 
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
 (provide 'init-package)
+;;; init-package.el ends here
