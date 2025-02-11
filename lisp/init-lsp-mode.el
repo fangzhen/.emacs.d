@@ -37,7 +37,12 @@
     (define-key lsp-ui-mode-map (kbd "C-.") 'lsp-ui-peek-find-implementation))
   (use-package lsp-treemacs)
   (use-package lsp-ivy)
+  (use-package lsp-pyright
+    :init
+    (setq lsp-pyright-multi-root nil) ; To invoke seperate pyright for each project. see https://github.com/emacs-lsp/lsp-pyright/issues/66
+    )
   )
+
 
 (defun lsp-ensure() (lsp-deferred))
 

@@ -4,6 +4,7 @@
 ;;; Code:
 
 ;; Python
+;; `ruff server` can be used along with other servers.
 (use-package yapfify)
 (add-hook 'python-mode-hook #'lsp-ensure)
 
