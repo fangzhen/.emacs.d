@@ -3,7 +3,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(load-theme 'modus-operandi)
+(add-hook 'window-setup-hook (lambda () (load-theme 'modus-operandi t)))
 (setq font-use-system-font t)
 
 (provide 'init-face)
