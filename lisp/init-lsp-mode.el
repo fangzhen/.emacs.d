@@ -22,7 +22,6 @@
 (use-package lsp-mode
   :config
   (setq lsp-auto-configure t)
-  (setq lsp-enable-file-watchers nil)
   ;; register globalls with high priority
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection "globalls")
