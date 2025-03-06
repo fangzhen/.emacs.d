@@ -83,6 +83,7 @@
 (use-package which-key
   :config
   (which-key-mode 1)
+  (setq which-key-popup-type 'minibuffer) ;; the default value in emacs 30.1 makes fcitx lost focus.
   :diminish which-key-mode
 )
 
