@@ -158,5 +158,8 @@
 (use-package vterm)
 (use-package multi-vterm)
 
+;; wayland version didn't paste correctly from X applications.
+(set-selection-coding-system 'utf-8)
+
 (provide 'init-misc)
 ;;; init-misc.el ends here
