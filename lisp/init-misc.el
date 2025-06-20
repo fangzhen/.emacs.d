@@ -151,7 +151,7 @@
 
 (use-package pdf-tools
   :config
-  (pdf-tools-install)
+  (pdf-tools-install t)
 )
 
 ;; Use vterm and allow multiple vterm buffers
