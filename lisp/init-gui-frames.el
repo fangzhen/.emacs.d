@@ -21,7 +21,8 @@
                  "%b"))))
 
 ;; Default to maximize frame
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(add-to-list 'server-after-make-frame-hook (lambda () (toggle-frame-maximized)))
+(add-to-list 'window-setup-hook (lambda () (toggle-frame-maximized)))
 
 (provide 'init-gui-frames)
 ;;; init-gui-frames.el ends here
